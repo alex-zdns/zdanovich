@@ -1,4 +1,4 @@
-package ru.zdanovich.developerslife.presentation.content
+package ru.zdanovich.developerslife.presentation.section.content
 
 import androidx.recyclerview.widget.RecyclerView
 import ru.zdanovich.developerslife.databinding.ItemDevLifePostBinding

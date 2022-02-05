@@ -6,10 +6,10 @@ import retrofit2.http.Query
 import ru.zdanovich.developerslife.data.remote.models.DevLifePostsResponse
 
 interface DevelopersLifeRetrofitApiService {
-    @GET("{section}/0?json=true")
+    @GET("{section}/{page}?json=true")
     suspend fun getPosts(
         @Path("section") section: String = "top",
-        @Query("page") page: Int = 0,
+        @Path("page") page: Int = 0,
         @Query("pageSize") pageSize: Int = 10
     ): DevLifePostsResponse
 }

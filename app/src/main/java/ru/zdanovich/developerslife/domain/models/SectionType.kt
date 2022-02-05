@@ -1,6 +1,10 @@
 package ru.zdanovich.developerslife.domain.models
 
-enum class SectionType {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+enum class SectionType : Parcelable {
     LATEST,
     HOT,
     TOP

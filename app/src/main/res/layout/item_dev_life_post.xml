@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    tools:layout_height="400dp"
+    tools:layout_margin="16dp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -20,6 +24,6 @@
         android:textSize="16sp"
         android:paddingHorizontal="12dp"
         android:paddingVertical="8dp"
-        android:background="@drawable/bg_gradient_black_60_transparent"
+        android:background="@drawable/bg_gradient_black"
         tools:text="Когда нет времени сделать всё правильно"/>
-</FrameLayout>
+</androidx.cardview.widget.CardView>

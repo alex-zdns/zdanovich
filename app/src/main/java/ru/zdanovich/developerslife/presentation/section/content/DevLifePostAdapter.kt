@@ -1,4 +1,4 @@
-package ru.zdanovich.developerslife.presentation.content
+package ru.zdanovich.developerslife.presentation.section.content
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
