@@ -6,4 +6,7 @@ data class DevLifePost(
     val description: String,
     val gifUrl: String,
     val previewURL: String?,
-)
+): Similarable<DevLifePost> {
+    override fun areItemsTheSame(other: DevLifePost) = this.id == other.id
+    override fun areContentsTheSame(other: DevLifePost) = this == other
+}
