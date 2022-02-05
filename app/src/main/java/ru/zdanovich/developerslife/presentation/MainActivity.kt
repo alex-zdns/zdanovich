@@ -1,11 +1,10 @@
-package ru.zdanovich.developerslife
+package ru.zdanovich.developerslife.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 import ru.zdanovich.developerslife.databinding.ActivityMainBinding
 import ru.zdanovich.developerslife.extensions.viewBinding
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

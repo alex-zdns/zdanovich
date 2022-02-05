@@ -5,5 +5,5 @@ data class DevLifePost(
     val id: Int,
     val description: String,
     val gifUrl: String,
-    val previewURL: String,
+    val previewURL: String?,
 )
