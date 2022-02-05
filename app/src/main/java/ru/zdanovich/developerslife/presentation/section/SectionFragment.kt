@@ -45,8 +45,21 @@ class SectionFragment: androidx.fragment.app.Fragment(R.layout.fragment_section)
 
     private fun callOperation() = viewModel.loadPosts()
 
-    private fun setupView() {
-        binding.viewPager.adapter = devLifePostAdapter
+    private fun setupView() = with(binding) {
+        viewPager.adapter = devLifePostAdapter
+
+        imageViewNextButton.setOnClickListener {
+            var currentItem = viewPager.currentItem
+            viewPager.currentItem = ++currentItem
+        }
+
+        imageViewBackButton.setOnClickListener {
+            var currentItem = viewPager.currentItem
+
+            if (currentItem != 0) {
+                viewPager.currentItem = --currentItem
+            }
+        }
     }
 
     private fun onBindViewModel() {

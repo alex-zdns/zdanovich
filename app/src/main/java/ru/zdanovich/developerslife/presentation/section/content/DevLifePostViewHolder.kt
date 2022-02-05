@@ -9,10 +9,7 @@ class DevLifePostViewHolder(
     private val binding: ItemDevLifePostBinding
     ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: DevLifePost) = with(binding) {
-        imageView.loadGif(
-            item.gifUrl,
-            item.previewURL
-        )
+        imageView.loadGif(item.gifUrl)
 
         textViewDescription.text = item.description
     }

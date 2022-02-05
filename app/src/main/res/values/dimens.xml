@@ -7,4 +7,8 @@
     <dimen name="button_between_margin">48dp</dimen>
     <dimen name="divider_margin">24dp</dimen>
     <dimen name="divider_height">3dp</dimen>
+
+    <!-- Image Placeholder -->
+    <dimen name="image_placeholder_stroke_width">5dp</dimen>
+    <dimen name="image_placeholder_center_radius">30dp</dimen>
 </resources>
