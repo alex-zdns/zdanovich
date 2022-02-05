@@ -23,6 +23,7 @@ fun ImageView.loadGif(
     Glide.with(this)
         .load(gifUrl)
         .placeholder(circularProgressDrawable)
+        .error(R.drawable.ic_round_broken_image_64)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .apply(requestOptions.centerCrop())
         .into(this)
