@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_size">64dp</dimen>
+    <dimen name="button_padding">8dp</dimen>
+    <dimen name="default_elevation">8dp</dimen>
+    <dimen name="button_top_margin">48dp</dimen>
+    <dimen name="button_between_margin">48dp</dimen>
+    <dimen name="divider_margin">24dp</dimen>
+    <dimen name="divider_height">3dp</dimen>
+</resources>
