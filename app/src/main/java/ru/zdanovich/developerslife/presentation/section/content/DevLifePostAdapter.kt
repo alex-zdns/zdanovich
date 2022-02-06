@@ -2,7 +2,7 @@ package ru.zdanovich.developerslife.presentation.section.content
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import ru.zdanovich.developerslife.databinding.ItemDevLifePostBinding
 import ru.zdanovich.developerslife.domain.models.DevLifePost
 import ru.zdanovich.developerslife.presentation.recyclerview.DiffUtilItemCallbackFactory
@@ -10,7 +10,9 @@ import javax.inject.Inject
 
 class DevLifePostAdapter @Inject constructor(
     diffUtilItemCallbackFactory: DiffUtilItemCallbackFactory,
-) : ListAdapter<DevLifePost, DevLifePostViewHolder>(diffUtilItemCallbackFactory.create()) {
+) : PagingDataAdapter<DevLifePost, DevLifePostViewHolder>(
+    diffUtilItemCallbackFactory.create()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DevLifePostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -19,7 +21,8 @@ class DevLifePostAdapter @Inject constructor(
     }
 
     override fun onBindViewHolder(holder: DevLifePostViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
 }

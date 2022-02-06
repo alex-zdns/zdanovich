@@ -3,12 +3,14 @@ package ru.zdanovich.developerslife.presentation.section
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.paging.PagingData
 import dagger.hilt.android.AndroidEntryPoint
 import ru.zdanovich.developerslife.R
 import ru.zdanovich.developerslife.databinding.FragmentSectionBinding
 import ru.zdanovich.developerslife.domain.models.DevLifePost
 import ru.zdanovich.developerslife.domain.models.SectionType
 import ru.zdanovich.developerslife.extensions.viewBinding
+import ru.zdanovich.developerslife.presentation.paging.PagingLoadStateAdapter
 import ru.zdanovich.developerslife.presentation.section.content.DevLifePostAdapter
 import javax.inject.Inject
 
@@ -43,10 +45,15 @@ class SectionFragment: androidx.fragment.app.Fragment(R.layout.fragment_section)
         onBindViewModel()
     }
 
-    private fun callOperation() = viewModel.loadPosts()
+    private fun callOperation() = viewModel.launchPagingData()
 
     private fun setupView() = with(binding) {
-        viewPager.adapter = devLifePostAdapter
+        viewPager.adapter = devLifePostAdapter.apply {
+            withLoadStateHeaderAndFooter(
+                header = PagingLoadStateAdapter { devLifePostAdapter.retry() },
+                footer = PagingLoadStateAdapter { devLifePostAdapter.retry() }
+            )
+        }
 
         imageViewNextButton.setOnClickListener {
             var currentItem = viewPager.currentItem
@@ -66,7 +73,7 @@ class SectionFragment: androidx.fragment.app.Fragment(R.layout.fragment_section)
         viewModel.postsLiveData.observe(this.viewLifecycleOwner, this::setPosts)
     }
 
-    private fun setPosts(list: List<DevLifePost>){
-        devLifePostAdapter.submitList(list)
+    private fun setPosts(data: PagingData<DevLifePost>){
+        devLifePostAdapter.submitData(lifecycle, data)
     }
 }

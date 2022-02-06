@@ -1,13 +1,16 @@
 package ru.zdanovich.developerslife.domain.paging
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.zdanovich.developerslife.domain.api.DevLifeApiService
 import ru.zdanovich.developerslife.domain.models.DevLifePost
 import ru.zdanovich.developerslife.domain.models.SectionType
+import ru.zdanovich.developerslife.domain.paging.DevLifePageSource.Companion.DEFAULT_LIMIT
 import javax.inject.Inject
 
-class DevLifePageSource @Inject constructor(
+data class DevLifePageSource @Inject constructor(
     private val api: DevLifeApiService,
     private val type: SectionType
 ) : PagingSource<Int, DevLifePost>() {
@@ -53,4 +56,15 @@ class DevLifePageSource @Inject constructor(
     }
 
     override fun getRefreshKey(state: PagingState<Int, DevLifePost>): Int? = state.anchorPosition
+}
+
+fun DevLifePageSource.createPager(): Pager<Int, DevLifePost> {
+    return Pager(
+        config = PagingConfig(
+            pageSize = DEFAULT_LIMIT,
+            enablePlaceholders = false,
+            initialLoadSize = DEFAULT_LIMIT
+        ),
+        pagingSourceFactory = { this.copy() },
+    )
 }
