@@ -17,7 +17,7 @@ data class DevLifePageSource @Inject constructor(
 
     companion object {
         const val DEFAULT_KEY = 0
-        const val DEFAULT_LIMIT = 30
+        const val DEFAULT_LIMIT = 3
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DevLifePost> {

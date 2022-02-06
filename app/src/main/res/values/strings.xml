@@ -2,9 +2,9 @@
     <string name="app_name">Developers Life</string>
 
     <!-- Tab names -->
-    <string name="latest">последние</string>
-    <string name="hot">горячие</string>
-    <string name="top">лучшие</string>
+    <string name="latest">Последние</string>
+    <string name="hot">Горячие</string>
+    <string name="top">Лучшие</string>
 
     <string name="error_message">Произошла ошибка при загрузке данных. Проверьте подключение к сети.</string>
     <string name="retry">Повторить</string>

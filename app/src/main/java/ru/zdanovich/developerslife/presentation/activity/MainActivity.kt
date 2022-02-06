@@ -1,20 +1,11 @@
 package ru.zdanovich.developerslife.presentation.activity
 
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.view.isVisible
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import dagger.hilt.android.AndroidEntryPoint
 import ru.zdanovich.developerslife.databinding.ActivityMainBinding
 import ru.zdanovich.developerslife.domain.models.SectionType
 import ru.zdanovich.developerslife.extensions.getUiName
-import ru.zdanovich.developerslife.extensions.loadGif
 import ru.zdanovich.developerslife.extensions.viewBinding
 
 @AndroidEntryPoint
@@ -30,12 +21,13 @@ class MainActivity : AppCompatActivity() {
         setupView()
     }
 
-    private fun setupView() {
-        binding.viewPager.adapter = sectionAdapter
+    private fun setupView() = with(binding) {
+        viewPager.adapter = sectionAdapter
+        viewPager.isUserInputEnabled = false
 
         com.google.android.material.tabs.TabLayoutMediator(
-            binding.tabLayout,
-            binding.viewPager
+            tabLayout,
+            viewPager
         ) { tab, pos ->
             tab.text = tabsTitles[pos]
         }.attach()
