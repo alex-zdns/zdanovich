@@ -4,9 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class DevLifePostsResponse (
+class PageInfoResponse<T> (
     @SerialName("result")
-    val posts: List<DevLifePostResponse>?,
+    val items: List<T>?,
 
     @SerialName("totalCount")
     val totalCount: Int?

@@ -22,7 +22,7 @@ class SectionViewModel @Inject constructor(
 
     fun loadPosts() {
         viewModelScope.launch {
-            _postsLiveData.postValue(apiService.getDevLifePosts(sectionType = type))
+            _postsLiveData.postValue(apiService.getDevLifePosts(sectionType = type).items)
         }
     }
 }
