@@ -4,4 +4,4 @@ import java.lang.IllegalStateException
 
 class MappingException(
     fieldName: String
-): IllegalStateException("Проблемы конверсии поля $fieldName")
+): IllegalStateException("Проблема конверсии поля $fieldName")

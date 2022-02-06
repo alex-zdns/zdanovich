@@ -14,7 +14,7 @@
         android:elevation="@dimen/default_elevation"
         app:layout_constraintEnd_toStartOf="@id/imageViewNextButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPager"
+        app:layout_constraintTop_toBottomOf="@id/stateViewFlipper"
         app:layout_constraintBottom_toTopOf="@id/viewDivider"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintVertical_chainStyle="packed"
@@ -30,7 +30,7 @@
         android:layout_marginStart="@dimen/button_between_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageViewBackButton"
-        app:layout_constraintTop_toBottomOf="@id/viewPager"
+        app:layout_constraintTop_toBottomOf="@id/stateViewFlipper"
         app:layout_constraintTop_toTopOf="@id/imageViewBackButton" />
 
     <View
@@ -45,15 +45,20 @@
         android:layout_marginVertical="16dp"
         android:background="@color/divider"/>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <ru.zdanovich.developerslife.presentation.views.StateViewFlipper
+        android:id="@+id/stateViewFlipper"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintDimensionRatio="6.5:7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    </ru.zdanovich.developerslife.presentation.views.StateViewFlipper>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
