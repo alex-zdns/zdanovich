@@ -23,6 +23,7 @@ open class ApiServiceModule {
     companion object {
         const val JSON_MIME_TYPE = "application/json"
         const val CONNECTION_TIMEOUTS_MS = 60_000L
+        const val BASE_URL = "https://developerslife.ru/"
     }
 
     @Provides
@@ -56,8 +57,7 @@ open class ApiServiceModule {
         return Retrofit
             .Builder()
             .client(client)
-            // TODO поправить
-            .baseUrl("https://developerslife.ru/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(json.asConverterFactory(JSON_MIME_TYPE.toMediaType()))
             .build()
     }
@@ -67,7 +67,6 @@ open class ApiServiceModule {
     fun provideRetrofitApiService(retrofit: Retrofit): DevelopersLifeRetrofitApiService =
         retrofit.create(DevelopersLifeRetrofitApiService::class.java)
 
-    // TODO (поправить)
     @Provides
     @Singleton
     fun bindDevLifeApiService(

@@ -10,7 +10,6 @@ class DevLifePostViewHolder(
     ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: DevLifePost) = with(binding) {
         imageView.loadGif(item.gifUrl)
-
         textViewDescription.text = item.description
     }
 }

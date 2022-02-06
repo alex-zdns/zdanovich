@@ -9,7 +9,6 @@ class DevLifePostConvector @Inject constructor() {
     fun convert(source: DevLifePostResponse) = DevLifePost(
         id = source.id?:throw MappingException(DevLifePost::id.name),
         description = source.description?:throw MappingException(DevLifePost::description.name),
-        gifUrl = source.gifUrl?:throw MappingException(DevLifePost::description.name),
-        previewURL = source.previewURL,
+        gifUrl = source.gifUrl?:throw MappingException(DevLifePost::description.name)
     )
 }

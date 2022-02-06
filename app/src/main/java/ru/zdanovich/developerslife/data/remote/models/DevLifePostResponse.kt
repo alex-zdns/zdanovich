@@ -12,14 +12,5 @@ data class DevLifePostResponse(
     val description: String?,
 
     @SerialName("gifURL")
-    val gifUrl: String?,
-
-    @SerialName("previewURL")
-    val previewURL: String?,
-
-    @SerialName("width")
-    val width: Int?,
-
-    @SerialName("height")
-    val height: Int?
+    val gifUrl: String?
 )

@@ -22,8 +22,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupView() = with(binding) {
-        viewPager.adapter = sectionAdapter
-        viewPager.isUserInputEnabled = false
+        viewPager.apply {
+            adapter = sectionAdapter
+            isUserInputEnabled = false
+        }
 
         com.google.android.material.tabs.TabLayoutMediator(
             tabLayout,

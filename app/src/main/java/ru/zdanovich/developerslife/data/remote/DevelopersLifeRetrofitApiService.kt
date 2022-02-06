@@ -9,8 +9,8 @@ import ru.zdanovich.developerslife.data.remote.models.PageInfoResponse
 interface DevelopersLifeRetrofitApiService {
     @GET("{section}/{page}?json=true")
     suspend fun getPosts(
-        @Path("section") section: String = "top",
-        @Path("page") page: Int = 0,
-        @Query("pageSize") pageSize: Int = 10
+        @Path("section") section: String,
+        @Path("page") page: Int,
+        @Query("pageSize") pageSize: Int
     ): PageInfoResponse<DevLifePostResponse>
 }
