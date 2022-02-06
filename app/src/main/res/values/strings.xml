@@ -7,5 +7,6 @@
     <string name="top">Лучшие</string>
 
     <string name="error_message">Произошла ошибка при загрузке данных. Проверьте подключение к сети.</string>
+    <string name="empty_message">Тут пока ничего нет</string>
     <string name="retry">Повторить</string>
 </resources>

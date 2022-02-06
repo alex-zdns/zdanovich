@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_round_button_white" />
+    <item
+        android:gravity="center"
+        android:drawable="@drawable/ic_next"
+        android:top="@dimen/button_padding"
+        android:bottom="@dimen/button_padding"
+        android:right="@dimen/button_padding"
+        android:left="@dimen/button_padding"/>
+    <item android:drawable="@drawable/bg_transparent_ripple_round"/>
+</layer-list>

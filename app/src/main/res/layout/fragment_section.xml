@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/imageViewBackButton"
@@ -12,22 +12,22 @@
         android:background="@drawable/ic_back_button"
         android:contentDescription="@null"
         android:elevation="@dimen/default_elevation"
+        app:layout_constraintBottom_toTopOf="@id/viewDivider"
         app:layout_constraintEnd_toStartOf="@id/imageViewNextButton"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stateViewFlipper"
-        app:layout_constraintBottom_toTopOf="@id/viewDivider"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="0.4"/>
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/imageViewNextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/button_between_margin"
         android:background="@drawable/ic_next_button"
         android:contentDescription="@null"
         android:elevation="@dimen/default_elevation"
-        android:layout_marginStart="@dimen/button_between_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageViewBackButton"
         app:layout_constraintTop_toBottomOf="@id/stateViewFlipper"
@@ -37,13 +37,13 @@
         android:id="@+id/viewDivider"
         android:layout_width="0dp"
         android:layout_height="@dimen/divider_height"
-        app:layout_constraintStart_toStartOf="@id/imageViewBackButton"
-        app:layout_constraintEnd_toEndOf="@id/imageViewNextButton"
-        app:layout_constraintTop_toBottomOf="@id/imageViewBackButton"
         android:layout_marginHorizontal="@dimen/divider_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginVertical="16dp"
-        android:background="@color/divider"/>
+        android:background="@color/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/imageViewNextButton"
+        app:layout_constraintStart_toStartOf="@id/imageViewBackButton"
+        app:layout_constraintTop_toBottomOf="@id/imageViewBackButton" />
 
     <ru.zdanovich.developerslife.presentation.views.StateViewFlipper
         android:id="@+id/stateViewFlipper"
@@ -52,13 +52,25 @@
         app:layout_constraintDimensionRatio="6.5:7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </ru.zdanovich.developerslife.presentation.views.StateViewFlipper>
+
+    <ViewStub
+        android:id="@+id/emptyView"
+        android:inflatedId="@+id/emptyView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout="@layout/item_empty"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="@id/stateViewFlipper"
+        app:layout_constraintEnd_toEndOf="@id/stateViewFlipper"
+        app:layout_constraintTop_toTopOf="@id/stateViewFlipper"
+        app:layout_constraintBottom_toBottomOf="@id/stateViewFlipper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
