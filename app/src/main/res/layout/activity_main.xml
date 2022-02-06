@@ -7,6 +7,14 @@
     tools:context=".presentation.activity.MainActivity"
     android:orientation="vertical">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        app:title="@string/app_name"
+        app:navigationIcon="@drawable/ic_user_avatar"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/ToolbarStyle" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"

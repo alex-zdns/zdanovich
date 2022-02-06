@@ -15,6 +15,7 @@
         android:theme="@style/Theme.DevelopersLife">
         <activity
             android:name=".presentation.activity.MainActivity"
+            android:screenOrientation="fullSensor"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
