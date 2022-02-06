@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black_80">#C8000000</color>
     <color name="divider">#6e6e6e</color>
-    <color name="placeholder">#1177e7</color>
+    <color name="blue">#1177e7</color>
+    <color name="gray">#6d6d6d</color>
 </resources>

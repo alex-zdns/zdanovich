@@ -11,4 +11,7 @@
     <!-- Image Placeholder -->
     <dimen name="image_placeholder_stroke_width">5dp</dimen>
     <dimen name="image_placeholder_center_radius">30dp</dimen>
+
+
+    <dimen name="card_radius">16dp</dimen>
 </resources>

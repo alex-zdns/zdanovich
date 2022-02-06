@@ -5,4 +5,7 @@
     <string name="latest">последние</string>
     <string name="hot">горячие</string>
     <string name="top">лучшие</string>
+
+    <string name="error_message">Произошла ошибка при загрузке данных. Проверьте подключение к сети.</string>
+    <string name="retry">Повторить</string>
 </resources>

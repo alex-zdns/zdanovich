@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="@dimen/card_radius"
     tools:layout_height="400dp"
     tools:layout_margin="16dp"
     app:cardElevation="@dimen/default_elevation">

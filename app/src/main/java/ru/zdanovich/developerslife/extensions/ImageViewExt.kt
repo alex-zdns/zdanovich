@@ -16,7 +16,7 @@ fun ImageView.loadGif(
     val circularProgressDrawable = CircularProgressDrawable(this.context).apply {
         strokeWidth = resources.getDimension(R.dimen.image_placeholder_stroke_width)
         centerRadius = resources.getDimension(R.dimen.image_placeholder_center_radius)
-        setColorSchemeColors(ContextCompat.getColor(context, R.color.placeholder))
+        setColorSchemeColors(ContextCompat.getColor(context, R.color.blue))
         start()
     }
 
