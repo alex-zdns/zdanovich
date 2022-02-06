@@ -23,6 +23,7 @@ class SectionViewModel @Inject constructor(
 ): ViewModel() {
     lateinit var type: SectionType
 
+    /** Получение списка постов */
     private val _postsLiveData = MutableLiveData<PagingData<DevLifePost>>()
     val postsLiveData: LiveData<PagingData<DevLifePost>> = _postsLiveData
 
@@ -46,9 +47,7 @@ class SectionViewModel @Inject constructor(
     ) {
         when (loadState.source.refresh) {
             is LoadState.NotLoading -> this.postValue(LoadableResult.success(Unit))
-            // Show loading spinner during initial load or refresh.
             is LoadState.Loading -> this.postValue(LoadableResult.loading())
-            // Show the retry state if initial load or refresh fails.
             is LoadState.Error -> this.postValue(
                 LoadableResult.failure(
                     (loadState.source.refresh as LoadState.Error).error,

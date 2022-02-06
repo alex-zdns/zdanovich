@@ -17,7 +17,7 @@ data class DevLifePageSource @Inject constructor(
 
     companion object {
         const val DEFAULT_KEY = 0
-        const val DEFAULT_LIMIT = 3
+        const val DEFAULT_LIMIT = 50
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DevLifePost> {
@@ -27,7 +27,7 @@ data class DevLifePageSource @Inject constructor(
         return try {
             val result = api.getDevLifePosts(sectionType = type, page = page, pageSize = limit)
             val nextOffset = page * DEFAULT_LIMIT + result.items.size
-                    LoadResult.Page(
+            LoadResult.Page(
                 data = result.items,
                 prevKey = calcPrevKey(page),
                 itemsBefore = calcItemsBefore(page),

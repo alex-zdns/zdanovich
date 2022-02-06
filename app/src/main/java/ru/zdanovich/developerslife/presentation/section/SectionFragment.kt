@@ -1,18 +1,13 @@
 package ru.zdanovich.developerslife.presentation.section
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.customview.widget.ViewDragHelper
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.coroutineScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.PagingData
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import ru.zdanovich.developerslife.R
 import ru.zdanovich.developerslife.databinding.FragmentSectionBinding
 import ru.zdanovich.developerslife.domain.models.DevLifePost
@@ -49,36 +44,61 @@ class SectionFragment : androidx.fragment.app.Fragment(R.layout.fragment_section
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.getParcelable<SectionType>(SECTION_TYPE)?.let { type ->
-            viewModel.type = type
-        }
-
         callOperation()
         setupView()
         onBindViewModel()
     }
 
-    private fun callOperation() = viewModel.launchPagingData()
+    private fun callOperation() {
+        arguments?.getParcelable<SectionType>(SECTION_TYPE)?.let { type ->
+            viewModel.type = type
+        }
+
+        viewModel.launchPagingData()
+    }
 
     private fun setupView() = with(binding) {
-        viewPager.adapter = devLifePostAdapter.withLoadStateHeaderAndFooter(
-            header = PagingLoadStateAdapter { devLifePostAdapter.retry() },
-            footer = PagingLoadStateAdapter { devLifePostAdapter.retry() }
-        )
+        devLifePostAdapter.apply {
+            addLoadStateListener(defaultLoadingState)
+
+            addOnPagesUpdatedListener {
+                val itemCount = devLifePostAdapter.itemCount
+                imageViewNextButton.isEnabled = itemCount > 0
+                emptyView.isVisible = itemCount == 0
+            }
+        }
+
+        viewPager.apply {
+            adapter = devLifePostAdapter.withLoadStateHeaderAndFooter(
+                header = PagingLoadStateAdapter { devLifePostAdapter.retry() },
+                footer = PagingLoadStateAdapter { devLifePostAdapter.retry() }
+            )
+
+            registerOnPageChangeCallback(
+                object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        imageViewBackButton.isEnabled = position != 0
+                    }
+                }
+            )
+        }
 
         stateViewFlipper.setRetryMethod { viewModel.launchPagingData() }
 
-        devLifePostAdapter.addLoadStateListener(defaultLoadingState)
+        setupButtonsHandling()
+    }
 
-        devLifePostAdapter.addOnPagesUpdatedListener {
-            val itemCount = devLifePostAdapter.itemCount
-            imageViewNextButton.isEnabled = itemCount > 0
-            setVisibleEmptyView(itemCount == 0)
-        }
+    private fun setupButtonsHandling() = with(binding) {
+        imageViewBackButton.isEnabled = false
+        imageViewNextButton.isEnabled = false
 
         imageViewNextButton.setOnClickListener {
             var currentItem = viewPager.currentItem
             viewPager.currentItem = ++currentItem
+
+            if (currentItem == devLifePostAdapter.itemCount - 1) {
+                imageViewNextButton.isEnabled = false
+            }
         }
 
         imageViewBackButton.setOnClickListener {
@@ -88,17 +108,6 @@ class SectionFragment : androidx.fragment.app.Fragment(R.layout.fragment_section
                 viewPager.currentItem = --currentItem
             }
         }
-
-        viewPager.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    imageViewBackButton.isEnabled = position != 0
-                }
-            }
-        )
-
-        imageViewBackButton.isEnabled = false
-        imageViewNextButton.isEnabled = false
     }
 
     private fun onBindViewModel() {
@@ -112,10 +121,5 @@ class SectionFragment : androidx.fragment.app.Fragment(R.layout.fragment_section
 
     private fun showStatus(result: LoadableResult<Unit>) {
         binding.stateViewFlipper.setStateFromResult(result)
-    }
-
-    private fun setVisibleEmptyView(isVisible: Boolean) = with(binding) {
-        emptyView.isVisible = isVisible
-        viewPager.isVisible = !isVisible
     }
 }
